@@ -20,9 +20,12 @@ export const Navigation = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#marketplace" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Link to="/marketplace" className="text-muted-foreground hover:text-foreground transition-colors">
               Marketplace
-            </a>
+            </Link>
+            <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors">
+              Dashboard
+            </Link>
             <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors">
               Community
             </a>
@@ -63,9 +66,12 @@ export const Navigation = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/50 animate-fade-in">
             <div className="flex flex-col space-y-4">
-              <a href="#marketplace" className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2">
+              <Link to="/marketplace" className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2">
                 Marketplace
-              </a>
+              </Link>
+              <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2">
+                Dashboard
+              </Link>
               <a href="#community" className="text-muted-foreground hover:text-foreground transition-colors px-4 py-2">
                 Community
               </a>

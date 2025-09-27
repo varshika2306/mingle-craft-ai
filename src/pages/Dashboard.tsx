@@ -2,6 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import { TaskBoard } from "@/components/ui/task-board";
+import { ProfileManager } from "@/components/ui/profile-manager";
+import { LanguageToggle } from "@/components/ui/language-toggle";
+import { useState } from "react";
 import { 
   User, 
   Package, 
@@ -16,6 +20,8 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
+  const [activeTab, setActiveTab] = useState<'overview' | 'tasks' | 'profile'>('overview');
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -27,6 +33,7 @@ const Dashboard = () => {
               <p className="text-muted-foreground">Ceramic Artist • Member since Jan 2024</p>
             </div>
             <div className="flex items-center space-x-4">
+              <LanguageToggle />
               <Button variant="outline" size="sm">
                 <Bell className="h-4 w-4 mr-2" />
                 3 New
@@ -40,6 +47,30 @@ const Dashboard = () => {
       </header>
 
       <div className="container mx-auto px-6 py-8">
+        {/* Navigation Tabs */}
+        <div className="flex space-x-1 bg-muted p-1 rounded-lg w-fit mb-8">
+          {[
+            { id: 'overview', label: 'Overview', icon: BarChart3 },
+            { id: 'tasks', label: 'Tasks', icon: Calendar },
+            { id: 'profile', label: 'Profile', icon: User }
+          ].map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <Button
+                key={tab.id}
+                variant={activeTab === tab.id ? "default" : "ghost"}
+                size="sm"
+                onClick={() => setActiveTab(tab.id as any)}
+                className="flex items-center space-x-2"
+              >
+                <Icon className="h-4 w-4" />
+                <span>{tab.label}</span>
+              </Button>
+            );
+          })}
+        </div>
+
+        {activeTab === 'overview' && (
         <div className="grid lg:grid-cols-12 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-8 space-y-8">
@@ -250,6 +281,15 @@ const Dashboard = () => {
             </Card>
           </div>
         </div>
+        )}
+
+        {activeTab === 'tasks' && (
+          <TaskBoard />
+        )}
+
+        {activeTab === 'profile' && (
+          <ProfileManager />
+        )}
       </div>
     </div>
   );
