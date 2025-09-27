@@ -57,11 +57,29 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        /* MingleMakers Custom Colors */
+        cream: "hsl(var(--cream))",
+        "warm-white": "hsl(var(--warm-white))",
+        teal: "hsl(var(--teal))",
+        "teal-light": "hsl(var(--teal-light))",
+        coral: "hsl(var(--coral))",
+        "coral-light": "hsl(var(--coral-light))",
+        sage: "hsl(var(--sage))",
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      backgroundImage: {
+        "gradient-hero": "var(--gradient-hero)",
+        "gradient-card": "var(--gradient-card)",
+        "gradient-accent": "var(--gradient-accent)",
+      },
+      boxShadow: {
+        "soft": "var(--shadow-soft)",
+        "card": "var(--shadow-card)",
+        "floating": "var(--shadow-floating)",
       },
       keyframes: {
         "accordion-down": {
@@ -80,10 +98,25 @@ export default {
             height: "0",
           },
         },
+        "fadeIn": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "slideUp": {
+          from: { opacity: "0", transform: "translateY(40px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "scaleIn": {
+          from: { opacity: "0", transform: "scale(0.9)" },
+          to: { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fadeIn 0.5s ease-out",
+        "slide-up": "slideUp 0.6s ease-out",
+        "scale-in": "scaleIn 0.4s ease-out",
       },
     },
   },
